@@ -11,7 +11,7 @@ bool comp(pair<string, int> a, pair<string, int> b){
 
 int main(){
     string sentence;
-    cout << "Masukan kalimat: ";
+    cout << "String to encode: ";
     getline(cin, sentence);
     set<char> wordSet(sentence.begin(), sentence.end());
     map<string, int> freqTable;
@@ -23,6 +23,7 @@ int main(){
         codeTable.emplace(*i, "");
     }
 
+    cout << "Frequency: " << endl;
     for(auto i:freqTable){
         cout << i.first << " : " << i.second << endl;
     }
@@ -46,8 +47,16 @@ int main(){
         freqTable.emplace(sMin, fMin);
     }
 
+    cout << "mapping result: " << endl;
     for(auto i:codeTable){
         cout << i.first << " : " << i.second << endl;
     }
+
+    cout << "encoded string: ";
+    for(auto i:sentence){
+        cout << codeTable[i];
+    }
+
+    cout << endl;
     return 0;
 }
